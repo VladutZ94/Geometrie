@@ -1,3 +1,3 @@
 # Geometrie
 
-Proiect Geometrie Compuationala
+Proiect Geometrie Computationala
