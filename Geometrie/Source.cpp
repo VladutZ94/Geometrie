@@ -10,8 +10,8 @@ int main()
 {
 	//Lab 1 puncte coliniare
 	GeomPoint3D A(1, 1, 1);
-	GeomPoint3D C(1, 1, 2);
-	GeomPoint3D B(1, 1, 3);
+	GeomPoint3D C(1, 1, 5);
+	GeomPoint3D B(1, 1, 9);
 	double alpha;
 
 	if (Utility::getInstance().isCollinear(A, B, C, alpha))
