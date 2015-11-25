@@ -40,6 +40,9 @@
       <Filter>Geometry</Filter>
     </ClCompile>
     <ClCompile Include="GeomVector2D.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="GeomLine2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -63,7 +66,10 @@
       <Filter>Geometry</Filter>
     </ClInclude>
     <ClInclude Include="GeomVector2D.h">
-      <Filter>Header Files</Filter>
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="GeomLine2D.h">
+      <Filter>Geometry</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
