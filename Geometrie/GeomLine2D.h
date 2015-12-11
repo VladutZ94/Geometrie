@@ -1,7 +1,7 @@
 #pragma once
 #include "GeomPoint2D.h"
 
-// To be continued by me
+// To be continued by m3
 class GeomLine2D
 {
 private:
