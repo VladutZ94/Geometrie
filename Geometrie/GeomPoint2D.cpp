@@ -26,8 +26,19 @@ std::ostream &operator<<(std::ostream &os, const GeomPoint2D& point)
 	return os;
 }
 
-bool GeomPoint2D::operator < (GeomPoint2D& b) {
-	if (y != b.y)
-		return y < b.y;
-	return x < b.x;
+bool GeomPoint2D::operator < (GeomPoint2D& P) 
+{
+	if (this->x < P.x)
+		return true;
+	if (P.x < this->x)
+		return false;
+	if (this->y < P.y)
+		return true;
+	return false;
 }
+
+GeomPoint2D GeomPoint2D::vect(GeomPoint2D &P1, GeomPoint2D &P2)
+{
+	return GeomPoint2D(P2.getX() - P1.getX(), P2.getY() - P1.getY());
+}
+

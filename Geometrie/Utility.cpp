@@ -1,4 +1,5 @@
 #include "Utility.h"
+#include "GeomVector2D.h"
 #include "GeomVector3D.h"
 #include <math.h>
 #include <algorithm>
@@ -90,77 +91,46 @@ double Utility::getAreaOfATriangle(GeomPoint2D& A, GeomPoint2D& B, GeomPoint2D& 
 	return abs(area);
 }
 
-GeomPoint2D pivot;
 
-// returns -1 if a -> b -> c forms a counter-clockwise turn(left turn),
-// +1 for a clockwise turn (right turn), 0 if they are collinear
-double ccw(const GeomPoint2D& p1, const GeomPoint2D& p2, const GeomPoint2D& p3)
+// shit for convex hull
+// V is the vector of points
+// N is the size of V
+std::vector<GeomPoint2D> V;
+int N;
+
+bool cmp( GeomPoint2D &P1,  GeomPoint2D &P2)
 {
-	double area = (p2.getX() - p1.getX()) * (p3.getY() - p1.getY()) - (p2.getY() - p1.getY()) * (p3.getX()- p1.getX());
-	if (area > 0)
-		return -1;
-	else if (area < 0)
-		return 1;
-	return 0;
+	return GeomVector2D().cross_product( GeomVector2D(V[1], P1), GeomVector2D(V[1], P2) ) < 0;
 }
 
-int cmp(const GeomPoint2D& p1, const GeomPoint2D& p2) {
-	return ccw(pivot, p1, p2) < 0;
-}
-
-// returns square of Euclidean distance between two points
-double sqrDist(GeomPoint2D& a, GeomPoint2D& b) {
-	double dx = a.getX() - b.getX();
-	double dy = a.getY() - b.getY();
-	return dx * dx + dy * dy;
-}
-
-bool POLAR_ORDER(GeomPoint2D a, GeomPoint2D b) {
-	double order = ccw(pivot, a, b);
-	if (order == 0)
-		return sqrDist(pivot, a) < sqrDist(pivot, b);
-	return (order == -1);
-}
-
-bool Utility::getConvexHull(std::vector<GeomPoint2D>& pointArray, GeomPolyline2D& ConvexHull)
+void _sort()
 {
-	if (pointArray.size() < 3)
+	int poz = 1;
+	for (int i = 2; i <= N; i++)
 	{
-		return false;
-	}
-
-	// find the point having the least y coordinate (pivot),
-	// ties are broken in favor of lower x coordinate
-	int leastY = 0;
-	for (unsigned i = 1; i < pointArray.size(); i++)
-		if (pointArray[i] < pointArray[leastY])
-			leastY = i;
-
-	// swap the pivot with the first point
-	GeomPoint2D temp = pointArray[0];
-	pointArray[0] = pointArray[leastY];
-	pointArray[leastY] = temp;
-
-	// sort the remaining point according to polar order about the pivot
-	pivot = pointArray[0];
-	std::sort(pointArray.begin(), pointArray.end(), POLAR_ORDER);
-
-	ConvexHull.append(pointArray[0]);
-	ConvexHull.append(pointArray[1]);
-
-
-	ConvexHull.append(pointArray[2]);
-
-	for (unsigned i = 3; i < pointArray.size(); i++) {
-		GeomPoint2D top = ConvexHull.top();
-		ConvexHull.pop();
-		while (ccw(ConvexHull.top(), top, pointArray[i]) != -1) {
-			top = ConvexHull.top();
-			ConvexHull.pop();
+		if (V[i] < V[poz])
+		{
+			poz = i;
 		}
-		ConvexHull.append(top);
-		ConvexHull.append(pointArray[i]);
 	}
-	ConvexHull.setClosed();
-	return true;
+	std::swap(V[1], V[poz]);
+	std::sort(V.begin() + 1, V.end(), cmp);
+}
+
+std::vector<GeomPoint2D> convex_hull()
+{
+	std::vector<GeomPoint2D> st;
+	_sort();
+	st.push_back(V[1]);
+	st.push_back(V[2]);
+	for (int i = 3; i <= N; i++)
+	{
+		while (st.size() > 1 && GeomVector2D().cross_product(GeomVector2D(st[st.size() - 2], st[st.size() - 1]), GeomVector2D(st[st.size() - 2], V[i])) > 0)
+		{
+			st.pop_back();
+		}
+		st.push_back(V[i]);
+
+	}
+	return st;
 }

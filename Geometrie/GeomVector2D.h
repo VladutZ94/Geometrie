@@ -1,4 +1,5 @@
 #pragma once
+#include "GeomPoint2D.h"
 
 class GeomVector2D
 {
@@ -12,6 +13,8 @@ public:
 
 	GeomVector2D(double, double);
 
+	GeomVector2D(GeomPoint2D&, GeomPoint2D&);
+
 	GeomVector2D(const GeomVector2D&);
 
 	double getX() const { return x; }
@@ -22,5 +25,5 @@ public:
 
 	GeomVector2D& operator +(const GeomVector2D&);
 
-
+	double cross_product( GeomVector2D&,  GeomVector2D&);
 };

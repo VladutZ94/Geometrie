@@ -24,5 +24,5 @@ public:
 
 	bool operator < (GeomPoint2D& b);
 
-
+	GeomPoint2D vect(GeomPoint2D &P1, GeomPoint2D &P2);
 };
