@@ -1,5 +1,4 @@
-#ifndef GEOMVECTOR3D_H
-#define GEOMVECTOR3D_H
+#pragma once
 #include <iostream>
 
 class GeomVector3D
@@ -124,4 +123,3 @@ private:
 	double m_y;
 	double m_z;
 };
-#endif
