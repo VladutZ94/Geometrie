@@ -16,11 +16,11 @@
     <Filter Include="Geometry">
       <UniqueIdentifier>{6a85e018-5c9a-4af9-94fe-409d8c3f472b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Laborator-Vlad Chichirau">
+      <UniqueIdentifier>{6a72d6d6-c571-4038-a99b-1979e04ddbbc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeomVector3D.cpp">
       <Filter>Geometry</Filter>
     </ClCompile>
@@ -42,7 +42,22 @@
     <ClCompile Include="GeomVector2D.cpp">
       <Filter>Geometry</Filter>
     </ClCompile>
+    <ClCompile Include="Laborator.cpp">
+      <Filter>Laborator-Vlad Chichirau</Filter>
+    </ClCompile>
     <ClCompile Include="GeomLine2D.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="Source.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeomPolygon2D.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="GeomSegment2D.cpp">
+      <Filter>Geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="SourceProiect.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -69,6 +84,15 @@
       <Filter>Geometry</Filter>
     </ClInclude>
     <ClInclude Include="GeomLine2D.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="Laborator.h">
+      <Filter>Laborator-Vlad Chichirau</Filter>
+    </ClInclude>
+    <ClInclude Include="GeomPolygon2D.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="GeomSegment2D.h">
       <Filter>Geometry</Filter>
     </ClInclude>
   </ItemGroup>

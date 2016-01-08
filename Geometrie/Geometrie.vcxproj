@@ -121,21 +121,28 @@
     <ClCompile Include="GeomLine2D.cpp" />
     <ClCompile Include="GeomPoint2D.cpp" />
     <ClCompile Include="GeomPoint3D.cpp" />
+    <ClCompile Include="GeomPolygon2D.cpp" />
     <ClCompile Include="GeomPolyline2D.cpp" />
     <ClCompile Include="GeomPolyline3D.cpp" />
+    <ClCompile Include="GeomSegment2D.cpp" />
     <ClCompile Include="GeomVector2D.cpp" />
     <ClCompile Include="GeomVector3D.cpp" />
+    <ClCompile Include="Laborator.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="SourceProiect.cpp" />
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeomLine2D.h" />
     <ClInclude Include="GeomPoint2D.h" />
     <ClInclude Include="GeomPoint3D.h" />
+    <ClInclude Include="GeomPolygon2D.h" />
     <ClInclude Include="GeomPolyline2D.h" />
     <ClInclude Include="GeomPolyline3D.h" />
+    <ClInclude Include="GeomSegment2D.h" />
     <ClInclude Include="GeomVector2D.h" />
     <ClInclude Include="GeomVector3D.h" />
+    <ClInclude Include="Laborator.h" />
     <ClInclude Include="Utility.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

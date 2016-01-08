@@ -18,6 +18,8 @@ public:
 
 	void append(GeomPoint2D&);
 
+	void append(GeomPolyline2D&);
+
 	friend std::ostream &operator << (std::ostream&, const GeomPolyline2D&);
 
 	std::vector<GeomPoint2D> getVertices() { return this->m_Vectices; }

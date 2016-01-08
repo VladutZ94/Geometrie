@@ -1,10 +1,12 @@
+#include <math.h>
+#include <algorithm>
+#include <Windows.h>
 #include "Utility.h"
 #include "GeomVector2D.h"
 #include "GeomVector3D.h"
-#include <math.h>
-#include <algorithm>
 
-bool Utility::isCollinear(GeomPoint3D& A, GeomPoint3D& B, GeomPoint3D& C, double& alpha)
+
+bool Utility::isCollinear(GeomPoint3D& A, GeomPoint3D& B, GeomPoint3D& C)
 {
 	GeomVector3D AB(B.getX() - A.getX(),
 					B.getY() - A.getY(),
@@ -17,34 +19,22 @@ bool Utility::isCollinear(GeomPoint3D& A, GeomPoint3D& B, GeomPoint3D& C, double
 	{
 		if (A == B)
 		{
-			alpha = 1;
 			return true;
 		}
 		if (A == C)
 		{
-			alpha = 0;
 			return true;
 		}
 		if (B == C)
 		{
-			alpha = -1;
 			return true;
-		}
-		GeomVector3D CB(B.getX() - C.getX(),
-						B.getY() - C.getY(),
-						B.getZ() - C.getZ());
-
-		GeomVector3D CA = -AC;
-		alpha = CA.Length() / CB.Length();
-		if (alpha > 1)
-		{
-			alpha = CB.Length() / CA.Length();
 		}
 		return true;
 	}
 	return false;
 }
 
+// Not sure if is a good thing going here =))
 bool Utility::isPolygonConvex(GeomPolyline2D& poly)
 {
 	if (poly.getNumberOfVertices() < 3 || !poly.isClosed())
@@ -117,8 +107,16 @@ void _sort()
 	std::sort(V.begin() + 1, V.end(), cmp);
 }
 
-std::vector<GeomPoint2D> convex_hull()
+bool Utility::getConvexHull(std::vector<GeomPoint2D>& convexHull, GeomPolyline2D& poly)
 {
+	V = poly.getVertices();
+	N = V.size();
+	V.push_back(GeomPoint2D());
+	for (unsigned i = N; i > 0; i--)
+	{
+		std::swap(V[i], V[i - 1]);
+	}
+
 	std::vector<GeomPoint2D> st;
 	_sort();
 	st.push_back(V[1]);
@@ -132,5 +130,34 @@ std::vector<GeomPoint2D> convex_hull()
 		st.push_back(V[i]);
 
 	}
-	return st;
+
+	convexHull = st;
+	return true;
+}
+
+bool Utility::bigProject(GeomPolygon2D& firstPolygon, GeomPolygon2D& secondPolygon)
+{
+	GeomPolyline2D polylineForConvexHull;
+
+	polylineForConvexHull = firstPolygon.getPolyline();
+	polylineForConvexHull.append(secondPolygon.getPolyline());
+
+	std::vector<GeomPoint2D> convexHull;
+	getConvexHull(convexHull, polylineForConvexHull);
+
+	std::reverse(convexHull.begin(), convexHull.end());
+	for (auto it : convexHull)
+	{
+		std::cout << it <<"->";
+	}
+
+	HANDLE  hConsole;
+	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, 12);
+	std::cout << convexHull[0];
+	SetConsoleTextAttribute(hConsole, 7);
+	std::cout << "=(start)\n";
+
+
+	return false;
 }

@@ -22,7 +22,11 @@ public:
 
 	friend std::ostream &operator <<(std::ostream& os, const GeomPoint2D&);
 
+	friend bool operator == (const GeomPoint2D&, const GeomPoint2D&);
+
 	bool operator < (GeomPoint2D& b);
+
+	double distanceTo(GeomPoint2D&);
 
 	GeomPoint2D vect(GeomPoint2D &P1, GeomPoint2D &P2);
 };

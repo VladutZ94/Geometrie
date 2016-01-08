@@ -22,6 +22,18 @@ void GeomPolyline2D::append(GeomPoint2D& point)
 	this->m_NumberOfVertices++;
 }
 
+void GeomPolyline2D::append(GeomPolyline2D& poly)
+{
+	GeomPoint2D point;
+	for (unsigned i = 0; i < poly.getNumberOfVertices(); i++)
+	{
+		poly.getVertexAt(i, point);
+		this->m_Vectices.push_back(point);
+		this->m_NumberOfVertices++;
+	}
+}
+
+
 std::ostream &operator<<(std::ostream &os, const GeomPolyline2D& p)
 {
 	for (auto it = 0; it < p.m_NumberOfVertices; it++)

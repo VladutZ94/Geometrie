@@ -1,5 +1,4 @@
 #include "GeomPoint2D.h"
-#include <iostream>
 
 
 GeomPoint2D::GeomPoint2D()
@@ -37,8 +36,20 @@ bool GeomPoint2D::operator < (GeomPoint2D& P)
 	return false;
 }
 
+bool operator==(const GeomPoint2D &p1, const GeomPoint2D &p2)
+{
+	return ((p1.getX() == p2.getX()) && (p1.getY() == p2.getY()));
+}
+
+double GeomPoint2D::distanceTo(GeomPoint2D& secondPoint)
+{
+	return sqrt(((secondPoint.getX() - this->getX()) * (secondPoint.getX() - this->getX())) + 
+				((secondPoint.getY() - this->getY()) * (secondPoint.getY() - this->getY())) );
+}
+
 GeomPoint2D GeomPoint2D::vect(GeomPoint2D &P1, GeomPoint2D &P2)
 {
 	return GeomPoint2D(P2.getX() - P1.getX(), P2.getY() - P1.getY());
 }
+
 
