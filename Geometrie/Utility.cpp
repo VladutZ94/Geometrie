@@ -135,7 +135,7 @@ bool Utility::getConvexHull(std::vector<GeomPoint2D>& convexHull, GeomPolyline2D
 	return true;
 }
 
-bool Utility::bigProject(GeomPolygon2D& firstPolygon, GeomPolygon2D& secondPolygon)
+bool Utility::bigProject(GeomPolygon2D& firstPolygon, GeomPolygon2D& secondPolygon, GeomPolyline2D& finalHull)
 {
 	GeomPolyline2D polylineForConvexHull;
 
@@ -150,7 +150,7 @@ bool Utility::bigProject(GeomPolygon2D& firstPolygon, GeomPolygon2D& secondPolyg
 	{
 		std::cout << it <<"->";
 	}
-
+	finalHull = convexHull;
 	HANDLE  hConsole;
 	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(hConsole, 12);
@@ -158,6 +158,5 @@ bool Utility::bigProject(GeomPolygon2D& firstPolygon, GeomPolygon2D& secondPolyg
 	SetConsoleTextAttribute(hConsole, 7);
 	std::cout << "=(start)\n";
 
-
-	return false;
+	return true;
 }

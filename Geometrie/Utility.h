@@ -34,6 +34,6 @@ public:
 
 	bool getConvexHull(std::vector<GeomPoint2D>&, GeomPolyline2D&);
 
-	bool bigProject(GeomPolygon2D&, GeomPolygon2D&);
+	bool bigProject(GeomPolygon2D&, GeomPolygon2D&, GeomPolyline2D&);
 
 };
