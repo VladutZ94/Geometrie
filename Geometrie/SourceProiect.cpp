@@ -8,7 +8,7 @@
 #include "Laborator.h"
 
 int WindowWidth = 900;
-int WindowHeight = 700;
+int WindowHeight = 800;
 
 GeomPolygon2D firstPoly, secondPoly;
 GeomPolyline2D convexHull;
@@ -61,18 +61,18 @@ void Display()
 void ComputeConvexHull()
 {
 	GeomPolyline2D polyline;
-	polyline.append(GeomPoint2D(100, 100));
-	polyline.append(GeomPoint2D(300, 100));
-	polyline.append(GeomPoint2D(300, 200));
-	polyline.append(GeomPoint2D(100, 200));
+	polyline.append(GeomPoint2D(150, 150));
+	polyline.append(GeomPoint2D(150, 300));
+	polyline.append(GeomPoint2D(300, 300));
+	polyline.append(GeomPoint2D(300, 150));
 	GeomPolygon2D firstPolygon(polyline);
 	firstPoly = firstPolygon;
 
 	GeomPolyline2D secondPolyline;
-	secondPolyline.append(GeomPoint2D(500, 500));
-	secondPolyline.append(GeomPoint2D(700, 500));
-	secondPolyline.append(GeomPoint2D(700, 600));
-	secondPolyline.append(GeomPoint2D(500, 600));
+	secondPolyline.append(GeomPoint2D(700, 400));
+	secondPolyline.append(GeomPoint2D(400, 400));
+	secondPolyline.append(GeomPoint2D(400, 700));
+	secondPolyline.append(GeomPoint2D(700, 700));
 	GeomPolygon2D secondPolygon(secondPolyline);
 	secondPoly = secondPolygon;
 
