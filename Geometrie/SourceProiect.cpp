@@ -60,7 +60,7 @@ void Display()
 
 void ComputeConvexHull()
 {
-	GeomPolyline2D polyline;
+	GeomPolyline2D polyline; 
 	polyline.append(GeomPoint2D(150, 150));
 	polyline.append(GeomPoint2D(150, 300));
 	polyline.append(GeomPoint2D(300, 300));
